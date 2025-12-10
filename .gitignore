@@ -1,0 +1,84 @@
+ㅎ; 다시...
+# -----------------------------------
+# OS 임시 파일
+.DS_Store
+Thumbs.db
+Desktop.ini
+.AppleDouble
+
+# -----------------------------------
+# Node.js / Next.js
+node_modules/
+.next/
+.next/cache/
+out/
+dist/
+.vercel/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# -----------------------------------
+# Java/Gradle / Spring Boot
+.gradle/
+build/
+*/build/
+target/
+bin/
+*.class
+*.log
+logs/
+
+# -----------------------------------
+# 패키징 파일 (배포 산출물)
+*.zip
+*.tar.gz
+*.tar
+*.tgz
+*.jar
+*.war
+*.ear
+
+# -----------------------------------
+# IDE 및 편집기 캐시
+.idea/
+*.iml
+*.swp
+*.swo
+*.bak
+.project
+.classpath
+.settings/
+.apt_generated/
+
+# -----------------------------------
+# VSCode 설정은 공유 목적이면 포함 가능
+# .vscode
+
+# -----------------------------------
+# 환경 변수 / 시크릿
+.env
+#.env.*
+application.yml
+!.env.example
+!application-example.yml
+
+# -----------------------------------
+# Docker & Infra
+docker-data/
+infra/data/
+infra/logs/
+.terraform/
+
+# -----------------------------------
+# Test & Coverage
+coverage/
+jacoco/
+test-output/
+.nyc_output/
+
+# -----------------------------------
+# Gradle wrapper는 예외적으로 포함
+!**/gradle-wrapper.jar
+!**/gradle-wrapper.properties

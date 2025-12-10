@@ -1,0 +1,27 @@
+# --- Build Stage ---
+FROM gradle:8.7.0-jdk17 AS builder
+
+WORKDIR /app
+
+# gradle wrapper 및 설정파일 복사 (backend 기준)
+COPY backend/gradlew ./gradlew
+COPY backend/gradle/ ./gradle
+COPY backend/settings.gradle.kts .
+COPY backend/build.gradle.kts .
+COPY backend/gradle.properties .
+COPY backend/src/ ./src
+
+# gradlew 실행권한 + 빌드(테스트 생략 시 -x test)
+RUN chmod +x ./gradlew && ./gradlew build -x test
+
+# --- Run Stage ---
+FROM eclipse-temurin:17-jdk-alpine
+
+WORKDIR /app
+
+# 빌드 결과 JAR만 복사 (이름 불문, 단일 JAR 빌드 기준)
+COPY --from=builder /app/build/libs/*.jar app.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "app.jar"]

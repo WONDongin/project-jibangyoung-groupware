@@ -1,0 +1,22 @@
+# 🔨 1단계: 빌드
+FROM node:20 AS builder
+
+WORKDIR /app
+
+COPY frontend/package*.json ./
+RUN npm ci
+
+COPY frontend/ ./
+RUN npm run build
+
+# 🚀 2단계: 런타임 (경량화된 베이스)
+FROM node:20-alpine
+
+WORKDIR /app
+
+ENV NODE_ENV=production
+
+COPY --from=builder /app ./
+
+EXPOSE 3000
+CMD ["npm", "run", "start"]

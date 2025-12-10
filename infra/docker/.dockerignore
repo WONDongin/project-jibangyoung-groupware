@@ -1,0 +1,14 @@
+# ✅ gradlew 포함
+!gradlew
+!gradle/**
+
+# ✅ 무시 항목은 아래 유지
+**/node_modules
+**/.next
+**/build
+**/.gradle
+**/.idea
+**/.vscode
+**/*.log
+**/.env
+**/.env.*

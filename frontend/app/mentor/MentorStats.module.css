@@ -1,0 +1,60 @@
+.title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 50px;
+  color: #222;
+}
+/* 3열 고정 */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.statsCard {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  padding: 24px 20px;
+  width: 100%;
+  min-width: 0;
+}
+
+.cardHeader {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.role {
+  font-size: 16px;
+  color: #2986ff;
+}
+.region {
+  color: #444;
+  font-size: 20px;
+}
+.nickname {
+  color: #bbb;
+  font-size: 0.9rem;
+  margin-left: auto;
+}
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.cardSection {
+  background: #f7fafd;
+  border-radius: 5px;
+  padding: 12px;
+}
+.sectionTitle {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #156bc1;
+}
