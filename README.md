@@ -152,17 +152,17 @@ Spring Boot + Next.js 기반 모듈형 모놀리식 아키텍처로 설계되었
 | Frontend Lint + Build |       🟢 성공       |
 | Required Check        |       🟢 성공       |
 | AWS Deploy (CD)       | 🔒 Secret 제거로 비활성 |
-<img src="./docs/screenshots/img_1.png" />
-<img src="./docs/screenshots/img_2.png" />
+<img src="./docs/screenshots/img_1.png"  width="500"/>
+<img src="./docs/screenshots/img_2.png"  width="500"/>
 
 <Br>
 
 ### 🔍 화면 예시 (Screenshots)
-<img src="./docs/screenshots/img_3.png" />
-<img src="./docs/screenshots/img_4.png" />
-<img src="./docs/screenshots/img_5.png" />
-<img src="./docs/screenshots/img_6.png" />
-<img src="./docs/screenshots/img_7.png" />
+<img src="./docs/screenshots/img_3.png" width="700"/>
+<img src="./docs/screenshots/img_4.png" width="700"/>
+<img src="./docs/screenshots/img_5.png" width="700"/>
+<img src="./docs/screenshots/img_6.png" width="700"/>
+<img src="./docs/screenshots/img_7.png" width="700"/>
 
 <Br>
 
