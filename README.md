@@ -16,30 +16,6 @@
 
 <Br>
 
-### 주요 기술적 특징 (Features)
-**보안**
-- JWT 기반 인증: Access/Refresh Token 분리
-- 소셜 로그인: 네이버 OAuth2 연동
-- 권한 관리: 사용자 역할별 접근 제어 (USER, ADMIN, MENTOR)
-- 입력 검증: Bean Validation 및 커스텀 검증 로직
-
-**성능 최적화**
-- Redis 캐싱: 자주 조회되는 데이터 캐싱
-- TanStack Query (React Query): 서버 상태 관리 및 캐싱
-
-**모니터링 및 로깅**
-- 사용자 활동 로깅: AOP 기반 활동 추적 (@UserActivityLogging)
-- Spring Batch: 대용량 로그 데이터 처리
-- ShedLock: 분산 환경에서 스케줄러 중복 실행 방지
-- 다중 스케줄러: 토큰 정리, 캐시 갱신, 점수 집계 등 7개 스케줄러 운영
-  
-**데이터베이스 설계**
-- JPA + QueryDSL: 타입 안전한 동적 쿼리
-- 지역 점수 시스템: 사용자별 지역 활동 점수 집계
-- 계층형 댓글: 대댓글 구조 지원
-
-<Br>
-
 ### ⚙️ 기술 스택 (Tech Stack)
 | 구분 | 사용 기술 |
 |------|----------|
@@ -190,6 +166,30 @@ JIBANGYOUNG/
 
 <Br>
 
+### 주요 기술적 특징 (Features)
+**보안**
+- JWT 기반 인증: Access/Refresh Token 분리
+- 소셜 로그인: 네이버 OAuth2 연동
+- 권한 관리: 사용자 역할별 접근 제어 (USER, ADMIN, MENTOR)
+- 입력 검증: Bean Validation 및 커스텀 검증 로직
+
+**성능 최적화**
+- Redis 캐싱: 자주 조회되는 데이터 캐싱
+- TanStack Query (React Query): 서버 상태 관리 및 캐싱
+
+**모니터링 및 로깅**
+- 사용자 활동 로깅: AOP 기반 활동 추적 (@UserActivityLogging)
+- Spring Batch: 대용량 로그 데이터 처리
+- ShedLock: 분산 환경에서 스케줄러 중복 실행 방지
+- 다중 스케줄러: 토큰 정리, 캐시 갱신, 점수 집계 등 7개 스케줄러 운영
+  
+**데이터베이스 설계**
+- JPA + QueryDSL: 타입 안전한 동적 쿼리
+- 지역 점수 시스템: 사용자별 지역 활동 점수 집계
+- 계층형 댓글: 대댓글 구조 지원
+
+<Br>
+
 ### ⚡ 문제 해결 경험 (Troubleshooting)
 1. 스케줄러 중복 실행 문제 <br>
 - 문제: 서버 재시작 시 스케줄러 중복 실행 가능성
@@ -244,3 +244,6 @@ JIBANGYOUNG/
 - GitHub Actions 기반 CI 구현
 - 협업 환경에서의 코드 리뷰/분담 경험
 - 서비스 백엔드 핵심 도메인 주도 개발
+
+### 🎯 한 줄 정리
+운영 자동화와 권한 기반 시스템 설계를 중심으로 구현한 백엔드 프로젝트
