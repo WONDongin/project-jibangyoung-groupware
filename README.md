@@ -50,7 +50,7 @@
 | **Frontend**            | Next.js(App Router), TypeScript, TailwindCSS        |
 | **Backend**             | Spring Boot, JPA, QueryDSL                          |
 | **Auth**                | OAuth2 로그인, JWT 인증                                  |
-| **Database**            | MySQL, Redis(캐싱 도입 준비)                              |
+| **Database**            | MySQL, Redis (조회 성능 개선을 위한 캐싱 구조 설계)                           |
 | **Server**              | AWS EC2, NGINX, Docker                              |
 | **Architecture**        | Modular Monolithic, Domain → Application → UI Layer |
 | **CI/CD**               | GitHub Actions 기반 자동화                               |
@@ -99,7 +99,7 @@
 
 <br>
 
-### ⚙️ 담당 개발 파트 (Core Logic)
+### ⚙️ 내가 담당한 핵심 기능 (My Contributions)
 
 ### 1. 멘토 자동 승급 시스템 (핵심)
 
@@ -113,10 +113,9 @@
 - `ShedLock` 적용으로 스케줄러 중복 실행 방지
 
 **결과**
-- 멘토 신청 → 승인 → 활동 → 승급으로 이어지는 단계별 흐름 설계
-- 멘토 활동 로그(게시글, 댓글 등)를 기반으로 점수 산정 구조 구현
-- 스케줄러를 통해 주기적으로 활동 점수 갱신 → 관리자 개입 최소화
-- 멘토 등급(A / B / C)에 따른 권한 분리 및 기능 제한 적용
+- 멘토 활동 기반 자동 승급 시스템 구축
+- 관리자 개입 없이 운영 자동화 달성
+- 권한 변화 흐름 시스템화
 - 핵심 소스: `domain/mentor/*.java`
 ```
 멘토 신청
@@ -179,7 +178,7 @@
 
 <Br>
 
-### ⚡ 트러블슈팅 & 개선 경험
+### ⚡ 문제 해결 경험 (Troubleshooting)
 1. 스케줄러 중복 실행 문제 <br>
 - 문제: 서버 재시작 시 스케줄러 중복 실행 가능성
   - 해결: `ShedLock` 적용
