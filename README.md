@@ -1,81 +1,81 @@
 ### ⭐ Local Youth Collaboration Platform (청년 지역 정착 지원 통합 그룹웨어)
-
-<br>
-
-### 한 줄 소개 (Key Point)
-
-> **멘토 활동 기반 자동 승급 시스템과 관리자 운영 자동화를 중심으로 설계한 백엔드 중심 플랫폼** <Br>
-> 단순 CRUD 서비스가 아닌, "활동 → 점수 → 권한 변화 → 운영 제어" 흐름을 자동화한 프로젝트입니다.
-
-<br>
-
 ### 소개 (Overview)
 
-> 지역 청년의 정착을 위해 정책 추천 · 커뮤니티 · 설문 · 멘토링 기능을  
-하나의 서비스로 통합한 웹 애플리케이션입니다. <Br>
+> 지방청년은 지방에 거주하는 청년들이 자신의 지역에서 활용할 수 있는 정책 정보를 쉽게 찾고, 지역별 커뮤니티를 통해 소통할 수 있도록 돕는 웹 플랫폼입니다. 수도권에 집중된 현재 상황에서 다양한 지방 정책들을 알려주어 지방 이주를 유도하고, 지방 정착을 지원하는 것을 목표로 합니다.
 
-> Spring Boot + Next.js 기반 **모듈형 모놀리식 아키텍처**로 설계되었으며,  
-사용자 역할에 따라 기능과 데이터 접근이 달라지는 구조를 구현했습니다.
+<br>
+
+### 주요기능 (Features)
+- 맞춤형 정책 추천 : 설문조사 기반 개인화 정책 추천 시스템
+- 지역별 커뮤니티 : 지역 코드별 게시판을 통한 청년 간 소통 공간
+- 정책 통합 관리 : 전국 청년 정책 정보 검색, 즐겨찾기, 상세 조회
+- 멘토링 시스템 : 멘토 신청/승인, 공지사항 관리, 멘토 대시보드
+- 대시보드 : 인기 게시글, 정책 랭킹, 지역별 통계 시각화
+- 마이페이지 : 프로필 관리, 활동 내역, 지역 점수 시스템
+- 관리자 시스템 : 사용자/게시글/신고 통합 관리, 멘토 승인
 
 <Br>
 
-### ⚙️ 사용자 기능 (Features)
+### 주요 기술적 특징 (Features)
+**보안**
+- JWT 기반 인증: Access/Refresh Token 분리
+- 소셜 로그인: 네이버 OAuth2 연동
+- 권한 관리: 사용자 역할별 접근 제어 (USER, ADMIN, MENTOR)
+- 입력 검증: Bean Validation 및 커스텀 검증 로직
 
-- 사용자
-  - 정책 추천 및 지역 정보 탐색
-  - 지역 커뮤니티 활동
-  - 멘토 신청 / 설문 참여
+**성능 최적화**
+- Redis 캐싱: 자주 조회되는 데이터 캐싱
+- TanStack Query (React Query): 서버 상태 관리 및 캐싱
 
-- 멘토
-  - 승인 기반 멘토 활동 가능
-  - 등급 승급(활동 점수 기반)
-  - 멘토링 기여 관리
-
-- 관리자(Admin)
-  - 사용자 전체 관리 (권한/상태 변경)
-  - 멘토 승인 / 경고 / 승급 제어
-  - 정책 정보 및 커뮤니티 운영 관리
-  - 신고/제재 처리
-
-- 인증 & 권한
-  - `OAuth2` + `JWT` 기반 로그인
-  - Role 기반 접근 제어 (`ADMIN` / `MENTOR` / `USER`)
-  - 비인가 사용자 접근 차단
+**모니터링 및 로깅**
+- 사용자 활동 로깅: AOP 기반 활동 추적 (@UserActivityLogging)
+- Spring Batch: 대용량 로그 데이터 처리
+- ShedLock: 분산 환경에서 스케줄러 중복 실행 방지
+- 다중 스케줄러: 토큰 정리, 캐시 갱신, 점수 집계 등 7개 스케줄러 운영
+  
+**데이터베이스 설계**
+- JPA + QueryDSL: 타입 안전한 동적 쿼리
+- 지역 점수 시스템: 사용자별 지역 활동 점수 집계
+- 계층형 댓글: 대댓글 구조 지원
 
 <Br>
 
 ### ⚙️ 기술 스택 (Tech Stack)
-| 구분                      | 사용 기술                                               |
-| ----------------------- | --------------------------------------------------- |
-| **Frontend**            | Next.js(App Router), TypeScript, TailwindCSS        |
-| **Backend**             | Spring Boot, JPA, QueryDSL                          |
-| **Auth**                | OAuth2 로그인, JWT 인증                                  |
-| **Database**            | MySQL, Redis (조회 성능 개선을 위한 캐싱 구조 설계)                           |
-| **Server**              | AWS EC2, NGINX, Docker                              |
-| **Architecture**        | Modular Monolithic, Domain → Application → UI Layer |
-| **CI/CD**               | GitHub Actions 기반 자동화                               |
-| **Collaboration Tools** | GitHub Projects, Pull Request Review                |
+| 구분 | 사용 기술 |
+|------|----------|
+| **Frontend** | Next.js(App Router), TypeScript, CSS Modules, Zustand, TanStack Query |
+| **Backend** | Spring Boot 3.5.4, Java 17, JPA/Hibernate, QueryDSL |
+| **Auth** | OAuth2(Naver), JWT, Spring Security |
+| **Database** | MariaDB, Redis (조회 성능 개선을 위한 캐싱 구조 설계) |
+| **Infra** | AWS EC2, AWS S3, Docker, Docker Compose |
+| **Architecture** | Modular Monolithic, Domain → Application → UI Layer |
+| **CI/CD** | GitHub Actions (CI / CD / Preview) |
+| **Monitoring & Batch** | Spring Boot Actuator, Spring Scheduler (다중 스케줄러 운영) |
 
 <Br>
 
 ### 📂 프로젝트 구조 (Project Structure)
 
 ```bash
-/backend
- ├── domain
- │     ├── admin/       # 관리자 도메인 API
- │     ├── mentor/      # 멘토 신청·승급 로직
- │     ├── policy/      # 정책 추천/조회
- │     ├── community/   # 지역 커뮤니티
- │     └── survey/      # 지역 기반 설문
- ├── auth/              # OAuth2 + JWT 인증
- └── config/            # Security & Infra 설정
-
-/frontend
- ├── app/               # Next.js App Router 기반 UI
- └── components/        # 공통 UI 요소
-
-
+JIBANGYOUNG/
+├── backend/                 # Spring Boot 백엔드
+│   ├── domain/              # 도메인 중심 비즈니스 로직
+│   │   ├── admin/           # 관리자 운영 및 제어
+│   │   ├── mentor/          # 멘토 신청 및 자동 승급 시스템
+│   │   ├── policy/          # 정책 추천 및 조회
+│   │   ├── community/       # 지역 커뮤니티
+│   │   └── survey/          # 설문 및 추천 로직
+│   └── global/              # 공통 설정 (Security, JWT, Config)
+│
+├── frontend/                # Next.js 기반 UI
+│   ├── app/                 # App Router 페이지 구조
+│   ├── components/          # 재사용 UI 컴포넌트
+│   ├── libs/                # API 통신 및 유틸
+│   └── types/               # TypeScript 타입 정의
+│
+└── infra/                   # 인프라 및 배포 환경
+    ├── docker/              # Docker 설정
+    └── scripts/             # 배포 및 실행 스크립트
 ```
 
 <br>
@@ -92,7 +92,7 @@
    ├─ Policy / Community / Survey
    └─ Authentication (OAuth2, JWT)
    ↓
-[MySQL + Redis]
+[MariaDB + Redis]
    ↓
 [AWS EC2 Deployment & GitHub Actions CI]
 ```
@@ -108,14 +108,16 @@
 - 운영 비용 증가 + 실시간 반영 어려움
 
 **해결**
-- 멘토 활동 로그 기반 점수 계산
-- `@Scheduled` 기반 자동 승급 처리
-- `ShedLock` 적용으로 스케줄러 중복 실행 방지
+- 멘토 활동 로그 기반 점수 계산 구조 설계
+- `@Scheduled` 기반 자동 승급 처리 (Spring Scheduler)
+- `ShedLock` 적용으로 분산 환경에서 스케줄러 중복 실행 방지
+- 사용자 활동 로그를 기반으로 점수 집계 로직 구성
 
 **결과**
 - 멘토 활동 기반 자동 승급 시스템 구축
 - 관리자 개입 없이 운영 자동화 달성
 - 권한 변화 흐름 시스템화
+- 운영 자동화를 위해 멘토 권한이 자동으로 변화하는 구조 설계
 - 핵심 소스: `domain/mentor/*.java`
 ```
 멘토 신청
@@ -135,13 +137,14 @@
 
 <br>
 
-### 2. Admin 운영 및 제어 흐름
+### 2. Admin 운영 및 제어 시스템
 
 - 관리자 중심의 플랫폼 운영 로직 통합 관리
 - 사용자 / 멘토 / 신고 / 정책 데이터를 하나의 흐름으로 제어
-- `QueryDSL` 기반 조건 검색 + 페이징 처리
-- 운영 효율을 고려한 UI 연동 완료
-- 모든 주요 제어 행위는 로그(Audit) 기록 구조로 관리
+- `QueryDSL` 기반 동적 조건 검색 및 페이징 처리
+- 주요 운영 행위에 대해 Audit 로그 기록 구조 설계
+- 사용자 활동 로깅을 위한 AOP 기반 추적 구조 일부 반영
+- 운영 효율을 고려한 관리자 중심 제어 시스템 구현
 - 핵심 소스: `domain/admin/*.java`
 ```
 신고 또는 운영 이슈 발생
@@ -156,7 +159,11 @@
 <br>
 
 ### 3. 인증 & 권한 제어
-- 각 화면 접근은 자동으로 역할에 따라 분기됩니다. 
+- `JWT` 기반 인증 (Access / Refresh Token 분리)
+- `OAuth2 (Naver)` 소셜 로그인 연동
+- `Spring Security` 기반 Role(`USER / ADMIN / MENTOR`) 접근 제어
+- Bean Validation 및 커스텀 검증 로직 적용
+- 사용자 권한에 따라 기능과 데이터 접근이 분리되는 구조 구현
 
 | 구성              | 설명                     |
 | --------------- | ---------------------- |
@@ -167,6 +174,11 @@
 <br>
 
 ### 4. CI/CD & DevOps
+- GitHub Actions 기반 CI/CD 파이프라인 구성
+- Backend 테스트 및 Frontend 빌드 자동화
+- Preview / CI / CD 워크플로우 분리 운영
+- Docker 기반 배포 환경 구성
+
 | 항목                    |         상태        |
 | --------------------- | :---------------: |
 | Backend Unit Test     |       🟢 성공       |
